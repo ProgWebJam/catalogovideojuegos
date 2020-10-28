@@ -1,0 +1,93 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} Crear Videojuegos {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center text-primary">Detalle de Videojuego</h1>
+
+<table border="1" cellpadding="8" cellspacing="0" class="table table-bordered">
+
+    <tr>
+        <th class="bg-secondary text-light">Nombre</th>
+        <td>{{ object.nombre }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Genero</th>
+        <td>{{ object.get_genero_display }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Fabricante</th>
+        <td>{{ object.fabricante }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Clasificacion</th>
+        <td>{{ object.get_clasificacion_display }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Año de Lanzamiento</th>
+        <td>{{ object.ano_lanzamiento }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Maximo de Jugadores</th>
+        <td>{{ object.max_jugadores }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Jugabilidad</th>
+        <td>{{ object.get_jugabilidad_display }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Plataformas</th>
+        <td>
+            {% for plataforma in videojuego.plataformas.all %}
+                {{ plataforma }}<br>
+            {% endfor %}
+        </td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Web Oficial</th>
+        <td><a href="{{ object.web_oficial }}">{{ object.web_oficial }}</a></td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Imagen</th>
+        <td>
+            {% if object.imagen %}
+            <img src="{{ object.imagen.url }}" height="300">
+            {% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Trailer</th>
+        <td><iframe width="560" height="315" src="{{ object.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+  
+
+
+                
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Raking</th>
+        <td>{{ object.ranking }}</td>
+    </tr>
+
+    <tr>
+        <th class="bg-secondary text-light">Modificacion</th>
+        <td>
+            <a href="{% url 'actualizar_videojuego' object.id %}" class="btn btn-success">Actualizar</a><br>
+            <a href="{% url 'eliminar_videojuego' object.id %}" class="btn btn-danger mt-3">Eliminar</a>
+        </td>
+    </tr>
+
+</table>
+
+{% endblock %}

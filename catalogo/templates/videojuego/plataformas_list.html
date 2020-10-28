@@ -1,0 +1,77 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} Crear Videojuegos {% endblock %}
+
+{% block content %}
+
+
+<h1 class="text-center text-primary">Filtro Plataformas</h1>
+
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm" action="{% url 'buscar_plataformas' %}" method="GET">
+                                {% csrf_token %}
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" name="q" type="search" placeholder="Buscar....">
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-success" type="submit">Consultar</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                            
+
+                        </div>
+
+    </div>
+    <!--<h1 class="text-center text-primary">Lista de Videojuego</h1>-->
+    <br>
+
+                            {% if object_list %}
+                            <table border="1" cellpadding="8" cellspacing="0" class="table table-bordered">
+
+                                <tr class="bg-secondary text-light">
+                                    <td>Marca</td>
+                                    <td>Fabricante</td>
+                                    <td>Tipo</td>
+                                    <td>Generacion</td>
+                                    <td>Capacidad de disco</td>
+                                    <td>GPU</td>
+                                    <!--<td>Soporte</td>-->
+                                    <td>Modificacion</td>
+                    
+                                </tr>
+                
+                                {% for platformas in object_list %}
+                                <tr>
+                                    <td>{{ platformas.marca }}</td>
+                                    <td>{{ platformas.fabricante }}</td>
+                                    <td>{{ platformas.get_tipo_display }}</td>
+                                    <td>{{ platformas.generacion }}</td>
+                                    <td>{{ platformas.capacidad_disco }}</td>
+                                    <td>{{ platformas.gpu }}</td>
+                                    <!--<td>{{ platformas.soporte }}</td>-->
+                                    
+                        
+                                    <td>
+                                        <a href="{% url 'detalle_plataformas' platformas.id %}" class="btn btn-success">Detalle</a>
+                                    </td>
+                                   
+                                </tr>
+                                {% endfor %}
+                    
+                            </table>
+                            {% else %}
+                                <h1>Dato no encontrado..</h1>
+                            {% endif %}
+
+
+{% endblock %}

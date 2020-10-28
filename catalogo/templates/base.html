@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %} Base {% endblock %}</title>
+    
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+<!----------------- MENU PRINCIPAL ----------------------->
+        {% block navbar %}
+        <nav class="navbar navbar-danger bg-danger">
+            
+
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" height="80" alt="">
+            </a>
+
+
+            {% block menulogin %} {% endblock %}
+            
+
+        </nav>
+        
+        {% endblock %}
+
+<!----------------- CONTENIDO PRINCIPAL ----------------------->
+        {% block content %}
+
+        <!--top5-->
+
+        <div class="container pt-3 pb-3">
+            <div class="d-flex align-items-center flex-column">
+                <h1 class="text-center">Super Juegos</h1>
+                {% load static %}
+                <img src="{% static 'img/logo.png' %}" height="400" alt="">
+        
+                <h4>La mejor tienda en consolas , videojuegos y accesorios de Cali</h4>
+        
+                <div class="form-group col-12">
+                    <hr>
+                </div>
+        
+                <h2>TOP5: VIDEOJUEGOS</h2>
+
+                {% block TOP5 %} {% endblock %}
+
+            </div>
+        </div>
+
+        {% endblock %}
+
+<!----------------- PIE DE PAGINA ----------------------->
+    <footer>
+        <nav class="navbar bg-primary">
+
+            <a> <img src="{% static 'img/correo.png' %}" height="50" alt="">Correo: superjuegos@gmail.com</a>
+            <a > <img src="{% static 'img/dirrecion.png' %}" height="50" alt="">Direccion: Cra 45 A # 23 -18 Barrio Granada</a>
+            <a> <img src="{% static 'img/telefono.png' %}" height="50" alt="">Tel.: 6457899</a>
+   
+       
+        </nav>
+
+    </footer>
+
+    
+</div>
+
+
+{% load static %}
+<script src="{%  static 'js/jquery-3.5.0.slim.min.js' %}"></script>
+<script src="{%  static 'js/popper.min.js' %}"></script>
+<script src="{%  static 'js/bootstrap.min.js' %}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} Crear Videojuegos {% endblock %}
+
+{% block content %}
+
+
+
+<form method="post" enctype="multipart/form-data">
+
+	{% csrf_token %}
+
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1 class="text-primary">Formulario Crea Video Juego</h1>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.nombre.name}}">{{form.nombre.label}}</label>
+				{{form.nombre}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.genero.name}}">{{form.genero.label}}</label>
+				{{form.genero}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.fabricante.name}}">{{form.fabricante.label}}</label>
+				{{form.fabricante}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.clasificacion.name}}">{{form.clasificacion.label}}</label>
+				{{form.clasificacion}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.ano_lanzamiento.name}}">{{form.ano_lanzamiento.label}}</label>
+				{{form.ano_lanzamiento}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.max_jugadores.name}}">{{form.max_jugadores.label}}</label>
+				{{form.max_jugadores}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.jugabilidad.name}}">{{form.jugabilidad.label}}</label>
+				{{form.jugabilidad}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.plataformas.name}}">{{form.plataformas.label}}</label>
+				{{form.plataformas}}
+			</div>
+        </div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.web_oficial.name}}">{{form.web_oficial.label}}</label>
+				{{form.web_oficial}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.imagen.name}}">{{form.imagen.label}}</label>
+				{{form.imagen}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.trailer.name}}">{{form.trailer.label}}</label>
+				{{form.trailer}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.ranking.name}}">{{form.ranking.label}}</label>
+				{{form.ranking}}
+			</div>
+		</div>
+
+        
+
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-danger" type="submit">Guardar</button>
+			</div>
+        </div>
+        
+	</div>
+	
+
+
+</form>
+
+{% endblock %}

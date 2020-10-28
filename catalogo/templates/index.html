@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} IndexSinLogin {% endblock %}
+
+{% block menulogin %} 
+{% load static %}
+<a class="navbar-brand mr-auto mt-2" href="{% url 'inicio' %}"> <img src="{% static 'img/moneda.png' %}" height="40" alt="">Inicio</a>
+<a class="navbar-brand mr-auto mt-2" href="{% url 'login' %}" ><img src="{% static 'img/vida.png' %}" height="45" alt="">Login</a>
+{% endblock %}
+
+{% block TOP5 %}
+
+    {% for t5 in  top5 %}
+
+    <!--
+    {% if t5.imagen %}
+    <img src="{{ t5.imagen.url }}" height="300">
+    {% endif %}
+    <p> {{ t5.ranking }} </p>
+    -->
+
+    <div class="row pt-3">
+
+
+
+            <div class="col-sm-4">
+
+                <div class="card" style="width: 18rem;">
+                    
+                    {% if t5.imagen %}
+                    <img src="{{ t5.imagen.url }}" height="300" class="card-img-top">
+                    {% endif %}
+
+                    <div class="card-body">    
+                        <div class="ec-stars-wrapper">
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                        </div>
+                      <p class="card-text">{{ t5.ranking }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            
+
+
+
+    </div>
+
+    
+
+    {% endfor %}
+
+
+{% endblock %}

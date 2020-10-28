@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %} IndexConLogin {% endblock %}
+
+{% block menulogin %} 
+{% load static %}
+
+
+<a class="navbar-brand mr-auto mt-2" href="{% url 'inicio_admin' %}"> <img src="{% static 'img/moneda.png' %}" height="40" alt="">Inicio</a>
+
+<div class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{% static 'img/estrella.png' %}" height="52" alt="">Gestión de Video Juegos</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'crear_videojuego' %}">Creación de Video Juego</a>
+        <a class="dropdown-item" href="{% url 'listar_videojuego' %}">Búsqueda de Video Juego</a>
+        <div class="dropdown-divider"></div>
+    </div>
+</div>
+
+<div class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{% static 'img/cubo.png' %}" height="43" alt="">Gestión de Plataformas</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'crear_plataformas' %}">Creación de Plataforma</a>
+        <a class="dropdown-item" href="{% url 'listar_plataformas' %}">Búsqueda de Plataforma</a>
+        <div class="dropdown-divider"></div>
+    </div>
+</div>
+
+<div class="nav-item dropdown">
+
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{% static 'img/yorshi_.png' %}" height="43" alt="">Sesion</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% if user.is_authenticated %}
+        <p>Usuario: {{ user.get_username }}</p>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a>
+        <div class="dropdown-divider"></div>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block TOP5 %}
+
+    {% for t5 in  top5 %}
+
+    <!--
+    {% if t5.imagen %}
+    <img src="{{ t5.imagen.url }}" height="300">
+    {% endif %}
+    <p> {{ t5.ranking }} </p>
+    -->
+
+    <div class="row pt-3">
+
+
+
+            <div class="col-sm-4">
+
+                <div class="card" style="width: 18rem;">
+
+                    {% if t5.imagen %}
+                    <img src="{{ t5.imagen.url }}" height="300" class="card-img-top">
+                    {% endif %}
+
+                    <div class="card-body">    
+                        <div class="ec-stars-wrapper">
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                            <a href="#" style="color:gold;">&#9733;</a>
+                        </div>
+                      <p class="card-text">{{ t5.ranking }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            
+
+
+
+    </div>
+
+    
+
+    {% endfor %}
+
+
+{% endblock %}

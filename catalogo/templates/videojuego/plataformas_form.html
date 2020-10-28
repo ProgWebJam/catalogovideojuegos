@@ -1,0 +1,78 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} CrearPlataformas {% endblock %}
+
+{% block content %}
+
+
+
+
+<form method="post">
+
+	{% csrf_token %}
+
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1 class="text-primary">Formulario Crea Plataformas</h1>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.marca.name}}">{{form.marca.label}}</label>
+				{{form.marca}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.fabricante.name}}">{{form.fabricante.label}}</label>
+				{{form.fabricante}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.tipo.name}}">{{form.tipo.label}}</label>
+				{{form.tipo}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.generacion.name}}">{{form.generacion.label}}</label>
+				{{form.generacion}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.capacidad_disco.name}}">{{form.capacidad_disco.label}}</label>
+				{{form.capacidad_disco}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.gpu.name}}">{{form.gpu.label}}</label>
+				{{form.gpu}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.soporte.name}}">{{form.soporte.label}}</label>
+				{{form.soporte}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.web_oficial.name}}">{{form.web_oficial.label}}</label>
+				{{form.web_oficial}}
+			</div>
+        </div>
+        
+
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-danger" type="submit">Guardar</button>
+			</div>
+        </div>
+        
+	</div>
+	
+
+
+</form>
+
+{% endblock %}

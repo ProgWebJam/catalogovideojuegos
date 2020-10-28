@@ -1,0 +1,120 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} Crear Videojuegos {% endblock %}
+
+{% block content %}
+
+
+<h1 class="text-center text-primary">Filtro Videojuego</h1>
+
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm" action="{% url 'search_results' %}" method="GET">
+                                {% csrf_token %}
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" name="q" type="search" placeholder="Buscar....">
+ 
+                                    </div>
+
+                                    <div class="col-auto p-2">
+                                        <label>Género :</label>
+                                        <select name="lista">
+                                            <option value=""></option>
+                                            <option value="a">Acción</option>
+                                            <option value="d">Deportes</option>
+                                            <option value="e">Estrategia</option>
+                                            <option value="c">Carreras</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-success" type="submit">Consultar</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                            
+
+                        </div>
+
+    </div>
+    <!--<h1 class="text-center text-primary">Lista de Videojuego</h1>-->
+    <br>
+
+                            {% if object_list %}
+                            <table border="1" cellpadding="8" cellspacing="0" class="table table-bordered">
+
+                                <tr class="bg-secondary text-light">
+                                    <td>Nombre</td>
+                                    <td>Genero</td>
+
+                                    <td>Fabricante</td>
+                                    
+                                    <td>Clasificacion</td>
+                                    <!--
+                                    <td>Año de Lanzamiento</td>
+                                    <td>Maximo de Jugadores</td>
+                                    <td>Jugabilidad</td>
+                                    -->
+                                    <td>Plataformas</td>
+
+                                    <!--<td>Web Oficial</td>-->
+                                    <td>Imagen</td>
+                                    <!--<td>Trailer</td>-->
+                                    <td>Raking</td>
+                                    <td>Modificacion</td>
+                    
+                                </tr>
+                
+                                {% for videojuego in object_list %}
+                                <tr>
+                                    <td>{{ videojuego.nombre }}</td>
+                                    <td>{{ videojuego.get_genero_display }}</td>
+                                    
+                                    <td>{{ videojuego.fabricante }}</td>
+                                    
+                                    <td>{{ videojuego.get_clasificacion_display }}</td>
+                                    <!--
+                                    <td>{{ videojuego.ano_lanzamiento }}</td>
+                                    <td>{{ videojuego.max_jugadores }}</td>
+                                    <td>{{ videojuego.get_jugabilidad_display }}</td>
+                                    -->
+                                    
+                                    <td>
+                                        {% for plataforma in videojuego.plataformas.all %}
+                                            {{ plataforma }}<br>
+                                        {% endfor %}
+                                    </td>
+                                    
+                        
+                                    <!--<td>{{ videojuego.web_oficial }}</td>-->
+                                    <td>
+                                        {% if videojuego.imagen %}
+                                        <img src="{{ videojuego.imagen.url }}" height="50">
+                                        {% endif %}
+                                    </td>
+                                    <!--<td>{{ videojuego.trailer }}</td>-->
+                                    <td>{{ videojuego.ranking }}</td>
+
+                                    
+                        
+                                    <td>
+                                        <a href="{% url 'detalle_videojuego' videojuego.id %}" class="btn btn-success">Detalle</a>
+                                    </td>
+                                   
+                                </tr>
+                                {% endfor %}
+                    
+                            </table>
+                            {% else %}
+                                <h1>Dato no encontrado..</h1>
+                            {% endif %}
+
+
+{% endblock %}

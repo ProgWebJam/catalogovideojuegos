@@ -1,0 +1,26 @@
+{% extends 'videojuego/admin.html' %}
+
+{% block title %} Crear Videojuegos {% endblock %}
+
+{% block content %}
+<br>
+
+<form action="" method="post" class="bt-2">
+
+    {% csrf_token %}
+
+
+    <div class="card">
+        <div class="card-header bg-warning text-white">
+          <h4>Alerta</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-text">Esta seguro de eliminar el videojuego : {{ object }} del inventario ?</h3>
+          <button class="btn btn-danger" type="submit" value="confirmacion">Confirmar</button>
+        </div>
+      </div>
+
+
+</form>
+<br>
+{% endblock %}
