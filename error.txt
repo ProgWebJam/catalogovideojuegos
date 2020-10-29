@@ -1,0 +1,19 @@
+---ERROR:---
+Error processing line 7 of C:\Users\Jhon\AppData\Roaming\Python\Python38\site-packages\pywin32.pth:
+
+  Traceback (most recent call last):
+    File "C:\Users\Jhon\AppData\Local\Programs\Python\Python38\lib\site.py", line 169, in addpackage
+      exec(line)
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'pywin32_bootstrap'
+
+Remainder of file ignored
+Error processing line 7 of C:\Users\Jhon\AppData\Roaming\Python\Python38\site-packages\pywin32.pth:
+
+---SOLUCION---
+
+pip install pywin32==225
+
+
+---URL---
+https://stackoverflow.com/questions/58989806/anaconda-terminal-error-pywin32-bootstrap

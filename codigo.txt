@@ -1,0 +1,45 @@
+---librerias---
+
+pip install gunicorn
+
+pip install psycopg2
+
+pip install dj-database-url
+
+pip install python-decouple
+
+pip install whitenoise
+
+
+---settings.py---
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
+
+import dj_database_url
+from decouple import config
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+
+MIDDLEWARE = [
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompresseManifestStaticFilesStorage'
+
+
+---urls.py---
+
+from django.conf import settings
+from django.conf.urls.static import static
+
++static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+---Procfile---
+web: gunicorn CatalogoVideojuego.wsgi --log-file -
